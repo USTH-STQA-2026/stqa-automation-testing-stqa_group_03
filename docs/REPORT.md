@@ -1,70 +1,78 @@
-# BÁO CÁO KẾT QUẢ DỰ ÁN KIỂM THỬ TỰ ĐỘNG WEB UI
-**Hệ thống:** Quản lý mượn sách Thư viện ABC (https://stqa.rbc.vn)  
-**Môn học:** Kiểm thử và Đảm bảo chất lượng phần mềm (STQA)  
-**Nhóm thực hiện:** Nhóm 3 (Lớp: 252ICT2012.L1)  
+# AUTOMATED UI TESTING PROJECT REPORT
+
+**System:** Library Book Borrowing Management System ([https://stqa.rbc.vn](https://stqa.rbc.vn))
+
+**Subject:** Software Testing and Quality Assurance (STQA)
+
+**Team:** Team 3 (Class: 252ICT2012.L1)
 
 ---
 
-## 👥 1. Danh sách thành viên & Bảng phân chia nhiệm vụ (Matrix)
+## 👥 1. Member List & Task Distribution Matrix
 
-Hệ thống ghi nhận sự đóng góp công bằng của cả 5 thành viên thông qua phân rã công việc (WBS) và kiểm duyệt chéo:
+The system records the equitable contribution of all 5 members through Work Breakdown Structure (WBS) and cross-review:
 
-| STT | Họ và tên | Vai trò | Nhiệm vụ Code Automation | Nhiệm vụ Lý thuyết & Phụ trách | Tỷ lệ đóng góp |
-|---|---|---|---|---|---|
-| 1 | Trần Duy Hoàng Anh | **Trưởng nhóm (Team Leader)** | Hoàn thành toàn bộ `tests/test_borrow_return.py` (`TC-08`, `TC-09`, `TC-10`) | Git Setup (Fork repo, cấu hình `.env` mẫu), Làm **BT4** (Vẽ sơ đồ máy trạng thái FSM Book Lifecycle) | 20% |
-| 2 | Nguyễn Lê Hải Anh | **Phó nhóm (QA Lead)** | Hoàn thành toàn bộ `tests/test_general.py` (`TC-11`, `TC-12`) | Gatekeeper (Review Pull Request, quét bẫy `time.sleep()`, check Weak Oracle), Làm **BT5** & **BT9**, Tổng hợp file `REPORT.md` | 20% |
-| 3 | Tạ Hoàng Duy | **Thành viên 3** | Hoàn thành `tests/test_login.py` (`TC-02`, `TC-03`) | Nghiên cứu dữ liệu từ `test-accounts.md`, áp dụng kĩ thuật Data-driven với `@pytest.mark.parametrize` cho các trường biên rỗng | 20% |
-| 4 | Hoàng Gia Khánh | **Thành viên 4** | Hoàn thành một phần `tests/test_search.py` (`TC-04`, `TC-05`) | Nghiên cứu tài liệu đặc tả hệ thống phục vụ kiểm thử Module Tìm kiếm (Phần 1) | 20% |
-| 5 | Nguyễn Trung Hiếu | **Thành viên 5** | Hoàn thành một phần `tests/test_search.py` (`TC-06`, `TC-07`) | Đóng góp câu trả lời lý thuyết **BT1** (Box Debate) và **BT2** (RIPR Detective) | 20% |
-
----
-
-## 📊 2. Kết quả thực thi kiểm thử (Test Execution Report)
-
-Bộ kiểm thử tự động bao gồm **15 kịch bản** (12 kịch bản bắt buộc theo đặc tả kịch bản kiểm thử trong `ASSIGNMENT.md` và 3 kịch bản nâng cao viết thêm phục vụ Bonus điểm B1).
-
-### 2.1. Thống kê tổng quan
-* **Tổng số kịch bản thiết kế:** 15
-* **Số kịch bản VƯỢT QUA (PASSED):** 15
-* **Số kịch bản THẤT BẠI (FAILED):** 0
-* **Tỷ lệ thành công (Success Rate):** 100%
-
-### 2.2. Chi tiết kết quả từng kịch bản
-Nhóm đã cấu hình lưu vết toàn bộ ảnh chụp minh chứng tại thư mục `screenshots/` sau khi kết thúc mỗi luồng chạy.
-
-| Mã TC | Tên kịch bản kiểm thử | Trạng thái | Minh chứng (Artifacts) | Ghi chú kỹ thuật |
-|---|---|---|---|---|
-| **TC-01** | Đăng nhập thành công với tài khoản hợp lệ | ✅ PASSED | `login_success.png` | Sử dụng tài khoản mặc định hệ thống |
-| **TC-02** | Đăng nhập thất bại – sai mật khẩu | ✅ PASSED | `login_fail_wrong_password.png` | Xác thực thông báo lỗi "Mật khẩu không đúng" |
-| **TC-03** | Đăng nhập thất bại – để trống các trường dữ liệu | ✅ PASSED | `login_fail_empty_fields_*.png` | Áp dụng `@pytest.mark.parametrize` quét 3 phân vùng biên |
-| **TC-04** | Tìm kiếm sách theo tên — có kết quả trả về | ✅ PASSED | `tc04_search_by_name.png` | Sử dụng từ khóa "Flutter", kiểm tra text Semantics |
-| **TC-05** | Tìm kiếm sách theo tên — không có kết quả | ✅ PASSED | `tc05_search_no_result.png` | Đối chiếu thông báo "Không tìm thấy sách" theo REQ-03 |
-| **TC-06** | Lọc sách theo Thể loại (Category) | ✅ PASSED | `tc06_filter_by_category.png` | Duyệt vòng lặp kiểm tra thuộc tính `aria-label` của các card |
-| **TC-07** | Tìm kiếm sách theo tên Tác giả | ✅ PASSED | `tc07_search_by_author.png` | Xác thực từ khóa tác giả "Nguyễn Minh Đức" |
-| **TC-08** | Mượn sách thành công | ✅ PASSED | `tc08_borrow_success.png` | Sử dụng tài khoản `dam.tran@email.com` (chưa mượn sách) |
-| **TC-09** | Kiểm tra danh sách sách đã mượn hiển thị | ✅ PASSED | `TC09_view_borrowed_books.png` | Xác thực chuyển tab điều hướng "Mượn / Trả" |
-| **TC-10** | Trả sách đang mượn thành công | ✅ PASSED | `tc10_return_success.png` | Chu trình chuyển đổi trạng thái thực thể hoàn tất |
-| **TC-11** | Đăng xuất (Logout) thành công | ✅ PASSED | `tc11_logout_success.png` | Xác thực trạng thái quay về màn hình Login ban đầu |
-| **TC-12** | Chuyển đổi ngôn ngữ giao diện sang Tiếng Anh | ✅ PASSED | `tc12_switch_language_en.png` | Đọc cấu trúc cây Semantics để quét text "Logout" / "Borrow" |
-| **TC-13** | Thủ thư thêm thành viên mới thành công | ✅ PASSED | `tc13_add_member_success.png` | **[Bonus B1]** Đăng nhập tài khoản Thủ thư (REQ-07) |
-| **TC-14** | Thủ thư kích hoạt tiến trình quét kiểm tra quá hạn | ✅ PASSED | `tc14_check_overdue_triggered.png` | **[Bonus B1]** Thực thi nghiệp vụ đặc biệt của Thủ thư (REQ-06) |
-| **TC-15** | Thêm thành viên thất bại do định dạng Email sai | ✅ PASSED | `tc15_invalid_email_format.png` | **[Bonus B1]** Phân tích giá trị biên lỗi cú pháp (REQ-07) |
+| No. | Full Name | Role | Automation Coding Tasks | Theoretical & Responsibility Tasks | Contribution Ratio |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Tran Duy Hoang Anh | **Team Leader** | Completed all `tests/test_borrow_return.py` (`TC-08`, `TC-09`, `TC-10`) | Git Setup (Fork repo, config sample `.env`), Completed **BT4** (Drawing FSM Book Lifecycle state diagram) | 20% |
+| 2 | Nguyen Le Hai Anh | **QA Lead** | Completed all `tests/test_general.py` (`TC-11`, `TC-12`) | Gatekeeper (Review Pull Requests, scan for `time.sleep()` anti-patterns, check Weak Oracle), Completed **BT5** & **BT9**, Compiled `REPORT.md` | 20% |
+| 3 | Ta Hoang Duy | **Member 3** | Completed `tests/test_login.py` (`TC-02`, `TC-03`) | Researched data from `test-accounts.md`, applied Data-driven techniques with `@pytest.mark.parametrize` for boundary conditions | 20% |
+| 4 | Hoang Gia Khanh | **Member 4** | Completed part of `tests/test_search.py` (`TC-04`, `TC-05`) | Researched system requirement specification documents for the Search Module testing (Part 1) | 20% |
+| 5 | Nguyen Trung Hieu | **Member 5** | Completed part of `tests/test_search.py` (`TC-06`, `TC-07`) | Contributed theoretical answers for **BT1** (Box Debate) and **BT2** (RIPR Detective) | 20% |
 
 ---
 
-## 🛠 3. Giải pháp kỹ thuật & Tối ưu hóa hạ tầng (Test Harness Infrastructure)
+## 📊 2. Test Execution Report
 
-Đối diện với đặc thù của ứng dụng **Flutter Web (CanvasKit renderer)**, nhóm đã áp dụng triệt để các kỹ thuật hạ tầng tiên tiến nhằm đạt điểm tuyệt đối tiêu chí tối ưu hóa:
+The automated test suite includes **15 scenarios** (12 mandatory scenarios based on the testing specification in `ASSIGNMENT.md` and 3 advanced scenarios for Bonus B1).
 
-1. **Loại bỏ hoàn toàn Anti-pattern `time.sleep()`:** Dựa trên kết quả nghiên cứu **BT9**, nhóm nhận thức rõ `time.sleep()` tạo ra trạng thái dừng không xác định (non-deterministic), làm chậm hạ tầng CI/CD một cách vô ích. Nhóm đã sử dụng hàm **Smart Wait** (`wait_for_flutter()`) hoạt động theo cơ chế polling tuần hoàn để đồng bộ hóa chính xác thời điểm cây Semantics Tree hoàn thành re-render.
-2. **Xây dựng Chiến lược Strong Oracle:** Để tăng khả năng bộc lộ lỗi (Revealability) của mô hình RIPR, toàn bộ các điểm kiểm tra (`assert`) không chỉ dừng lại ở việc kiểm tra URL hay kiểm tra trạng thái không crash (Null/Weak Oracle). Nhóm đã triển khai trích xuất toàn bộ chuỗi text được phơi bày trên `flt-semantics` thông qua:
-   ```python
-   sem_text = " ".join(page.locator("flt-semantics").all_text_contents())
-   assert "Thông báo mong đợi từ SRS" in sem_text
+### 2.1. Overview Statistics
+
+* **Total test scenarios:** 15
+* **PASSED scenarios:** 15
+* **FAILED scenarios:** 0
+* **Success Rate:** 100%
+
+### 2.2. Detailed Scenario Results
+
+The team configured screenshots to be saved in the `screenshots/` directory after each execution flow.
+
+| TC ID | Test Scenario Name | Status | Artifacts | Technical Notes |
+| --- | --- | --- | --- | --- |
+| **TC-01** | Successful login with valid account | ✅ PASSED | `login_success.png` | Used system default account |
+| **TC-02** | Failed login – wrong password | ✅ PASSED | `login_fail_wrong_password.png` | Validated error message "Mật khẩu không đúng" |
+| **TC-03** | Failed login – empty fields | ✅ PASSED | `login_fail_empty_fields_*.png` | Applied `@pytest.mark.parametrize` for 3 boundary partitions |
+| **TC-04** | Search book by title — result found | ✅ PASSED | `tc04_search_by_name.png` | Used keyword "Flutter", verified Semantics text |
+| **TC-05** | Search book by title — no result | ✅ PASSED | `tc05_search_no_result.png` | Matched message "Không tìm thấy sách" per REQ-03 |
+| **TC-06** | Filter books by Category | ✅ PASSED | `tc06_filter_by_category.png` | Iterated to check `aria-label` attribute of cards |
+| **TC-07** | Search book by Author | ✅ PASSED | `tc07_search_by_author.png` | Verified author keyword "Nguyễn Minh Đức" |
+| **TC-08** | Borrow book successfully | ✅ PASSED | `tc08_borrow_success.png` | Used account `dam.tran@email.com` (no prior loans) |
+| **TC-09** | Verify displayed borrowed books list | ✅ PASSED | `TC09_view_borrowed_books.png` | Verified navigation tab "Mượn / Trả" |
+| **TC-10** | Return borrowed book successfully | ✅ PASSED | `tc10_return_success.png` | Entity state transition cycle completed |
+| **TC-11** | Logout successfully | ✅ PASSED | `tc11_logout_success.png` | Verified state returned to initial Login screen |
+| **TC-12** | Switch interface language to English | ✅ PASSED | `tc12_switch_language_en.png` | Read Semantics tree to scan for "Logout" / "Borrow" text |
+| **TC-13** | Librarian adds new member successfully | ✅ PASSED | `tc13_add_member_success.png` | **[Bonus B1]** Logged in as Librarian (REQ-07) |
+| **TC-14** | Librarian triggers overdue check process | ✅ PASSED | `tc14_check_overdue_triggered.png` | **[Bonus B1]** Executed special Librarian operations (REQ-06) |
+| **TC-15** | Add member failed due to invalid Email format | ✅ PASSED | `tc15_invalid_email_format.png` | **[Bonus B1]** Analyzed syntax error boundary values (REQ-07) |
+
+---
+
+## 🛠 3. Technical Solutions & Test Harness Infrastructure Optimization
+
+To address the specific nature of the **Flutter Web (CanvasKit renderer)** application, the team applied advanced infrastructure techniques to achieve perfect scores in optimization criteria:
+
+1. **Complete removal of `time.sleep()` anti-pattern:** Based on **BT9** research, the team acknowledged that `time.sleep()` creates non-deterministic pauses, unnecessarily slowing down the CI/CD pipeline. The team implemented **Smart Wait** (`wait_for_flutter()`) using a polling mechanism to synchronize precisely when the Semantics Tree completes re-rendering.
+2. **Strong Oracle Strategy:** To enhance the revealability of the RIPR model, all assertions do not merely check URLs or crash status (Null/Weak Oracle). The team implemented extraction of all text displayed on `flt-semantics` via:
+```python
+sem_text = " ".join(page.locator("flt-semantics").all_text_contents())
+assert "Expected message from SRS" in sem_text
+
+```
 
 
-## 🛠 4. Khai báo sử dụng AI (AI Usage Declaration)
-Nhóm đã sử dụng mô hình ngôn ngữ lớn **Gemini**
-Phạm vi sử dụng: AI được dùng như một trợ lý (thợ gõ) để tăng tốc độ soạn thảo mã nguồn, gợi ý cú pháp hàm kiểm thử của thư viện Playwright Python, và hỗ trợ cấu hình định dạng HTML cho tài liệu báo cáo.
-Vai trò con người (Kiểm soát viên): Toàn bộ các Assertions (Oracle) sinh ra bởi AI đều được các thành viên trong nhóm đối chiếu và chuẩn hóa thủ công theo tài liệu đặc tả yêu cầu phần mềm (SRS-library-system.md). Nhóm đã tự tay loại bỏ hoàn toàn các selector sai bản chất CanvasKit và các hàm wait_for_timeout() do AI đề xuất để bảo vệ tính deterministic của bộ test.
 
+## 🛠 4. AI Usage Declaration
+
+The team utilized the **Gemini** large language model.
+Scope of use: AI was used as an assistant ("coder") to accelerate source code drafting, suggest Playwright Python library testing syntax, and assist in configuring HTML formatting for the report document.
+Human role (Controller): All Assertions (Oracles) generated by AI were reviewed and manually standardized by team members according to the software requirement specification (SRS-library-system.md). The team manually removed all selectors incorrect for CanvasKit and `wait_for_timeout()` functions suggested by AI to ensure the deterministic nature of the test suite.
