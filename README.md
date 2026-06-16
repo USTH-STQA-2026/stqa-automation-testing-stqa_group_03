@@ -1,12 +1,14 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/ZpUiBug-)
+
 # STQA Library Automation — Starter Template
 
 Bài tập thực hành **Kiểm thử Web UI tự động** cho môn **Kiểm thử và Đảm bảo chất lượng phần mềm (STQA)**.
-(*A hands-on **Automated Web UI Testing** assignment for the **Software Testing & Quality Assurance (STQA)** course.*)
+(_A hands-on **Automated Web UI Testing** assignment for the **Software Testing & Quality Assurance (STQA)** course._)
 
 Sử dụng **Playwright + Python** để kiểm thử hệ thống Mượn sách Thư viện ABC tại [https://stqa.rbc.vn](https://stqa.rbc.vn).
-(*Uses **Playwright + Python** to test the Library Book Borrowing System.*)
+(_Uses **Playwright + Python** to test the Library Book Borrowing System._)
 
-> **📚 Hệ thống hư cấu / Fictional System**: Thư viện ABC là hệ thống **hư cấu** được thiết kế cho mục đích học tập. Tên nhân vật, tổ chức và dữ liệu đều là giả lập. / *ABC Library is a **fictional** system designed for educational purposes. All names, organizations, and data are simulated.*
+> **📚 Hệ thống hư cấu / Fictional System**: Thư viện ABC là hệ thống **hư cấu** được thiết kế cho mục đích học tập. Tên nhân vật, tổ chức và dữ liệu đều là giả lập. / _ABC Library is a **fictional** system designed for educational purposes. All names, organizations, and data are simulated._
 
 ---
 
@@ -14,18 +16,19 @@ Sử dụng **Playwright + Python** để kiểm thử hệ thống Mượn sác
 
 > **⚠️ Sinh viên: Điền thông tin nhóm vào bảng dưới đây trước khi nộp bài.**
 
-|              | Thông tin                    |
-| ------------ | ---------------------------- |
-| **Tên nhóm** | `<!-- VD: Nhóm 1 -->`        |
-| **Lớp**      | `<!-- VD: SE001.P11 -->`     |
-| **Học kỳ**   | `<!-- VD: HK2 2025-2026 -->` |
+|              | Thông tin                |
+| ------------ | ------------------------ |
+| **Tên nhóm** | `<!-- Nhóm 3 -->`        |
+| **Lớp**      | `<!-- 252ICT2012.L1 -->` |
+| **Học kỳ**   | `<!--Học kì 2 -->`       |
 
-| #   | MSSV | Họ và tên | Vai trò     |
-| --- | ---- | --------- | ----------- |
-| 1   |      |           | Nhóm trưởng |
-| 2   |      |           | Thành viên  |
-| 3   |      |           | Thành viên  |
-| 4   |      |           | Thành viên  |
+| #   | MSSV    | Họ và tên          | Vai trò     |
+| --- | ------- | ------------------ | ----------- |
+| 1   | 2410102 | Trần Duy Hoàng Anh | Nhóm trưởng |
+| 2   | 2410073 | Nguyễn Lê Hải Anh  | Thành viên  |
+| 3   | 2410220 | Tạ Hoàng Duy       | Thành viên  |
+| 4   | 2410449 | Hoàng Gia Khánh    | Thành viên  |
+| 5   | 2410277 | Nguyễn Trung Hiếu  | Thành viên  |
 
 ---
 
@@ -39,7 +42,7 @@ SRS (Yêu cầu phần mềm) → Dev xây hệ thống → A1: Kiểm thử th�
 
 Ở bài **A1** (nếu đã làm), bạn đã kiểm thử thủ công: mở trình duyệt, nhấn nút, ghi kết quả. Bây giờ ở **A2**, bạn sẽ **tự động hóa** các thao tác đó bằng code.
 
-### Những ai liên quan? (*Stakeholders*)
+### Những ai liên quan? (_Stakeholders_)
 
 | Vai trò         | Ai?            | Liên quan thế nào?                                                                                          |
 | --------------- | -------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -58,16 +61,16 @@ SRS (Yêu cầu phần mềm) → Dev xây hệ thống → A1: Kiểm thử th�
 
 ### Software Testing vs Quality Assurance
 
-|                  | **Testing** (Bài này)                             | **QA**                                       |
-| ---------------- | ------------------------------------------------- | -------------------------------------------- |
+|                  | **Testing** (Bài này)                              | **QA**                                       |
+| ---------------- | -------------------------------------------------- | -------------------------------------------- |
 | **Bạn đang làm** | ✅ Viết automated test, chạy test, chụp screenshot | Bonus B4: Viết REPORT.md đánh giá chất lượng |
-| **Mục đích**     | Tìm lỗi tự động, nhanh, lặp lại được              | Đánh giá quy trình, đề xuất cải tiến         |
+| **Mục đích**     | Tìm lỗi tự động, nhanh, lặp lại được               | Đánh giá quy trình, đề xuất cải tiến         |
 
 ---
 
 > ⚠️ Website sử dụng **Flutter Web (CanvasKit renderer)** — toàn bộ giao diện render trên `<canvas>`, không có HTML DOM thông thường. Dự án đã cung cấp sẵn các helper function để tương tác qua **Accessibility Semantics Tree**.
 >
-> (*The website uses **Flutter Web (CanvasKit renderer)** — the entire UI is rendered on `<canvas>`, with no standard HTML DOM. This project provides helper functions to interact via the Accessibility Semantics Tree.*)
+> (_The website uses **Flutter Web (CanvasKit renderer)** — the entire UI is rendered on `<canvas>`, with no standard HTML DOM. This project provides helper functions to interact via the Accessibility Semantics Tree._)
 
 ---
 
@@ -165,8 +168,9 @@ CI sẽ thực hiện:
 2. Cài Playwright Chromium
 3. Chạy `pytest --junitxml=report.xml`
 4. Upload artifacts gồm:
-  - `report.xml`
-  - `screenshots/**`
+
+- `report.xml`
+- `screenshots/**`
 
 ### Cách xem kết quả CI
 
@@ -186,18 +190,18 @@ CI sẽ thực hiện:
 
 | TC    | Mô tả                                                | File                    | Trạng thái |
 | ----- | ---------------------------------------------------- | ----------------------- | ---------- |
-| TC-01 | Đăng nhập thành công (*Login success*)               | `test_login.py`         | ✅ Mẫu      |
-| TC-02 | Đăng nhập thất bại — sai mật khẩu (*Wrong password*) | `test_login.py`         | 🔴 TODO     |
-| TC-03 | Đăng nhập thất bại — để trống (*Empty fields*)       | `test_login.py`         | 🔴 TODO     |
-| TC-04 | Tìm sách theo tên (*Search by name*)                 | `test_search.py`        | 🔴 TODO     |
-| TC-05 | Tìm sách — không có kết quả (*No result*)            | `test_search.py`        | 🔴 TODO     |
-| TC-06 | Lọc theo thể loại (*Filter by category*)             | `test_search.py`        | 🔴 TODO     |
-| TC-07 | Tìm theo tác giả (*Search by author*)                | `test_search.py`        | 🔴 TODO     |
-| TC-08 | Mượn sách (*Borrow a book*)                          | `test_borrow_return.py` | 🔴 TODO     |
-| TC-09 | Xem sách đang mượn (*View borrowed books*)           | `test_borrow_return.py` | 🔴 TODO     |
-| TC-10 | Trả sách (*Return a book*)                           | `test_borrow_return.py` | 🔴 TODO     |
-| TC-11 | Đăng xuất (*Logout*)                                 | `test_general.py`       | 🔴 TODO     |
-| TC-12 | Chuyển ngôn ngữ sang EN (*Switch language*)          | `test_general.py`       | 🔴 TODO     |
+| TC-01 | Đăng nhập thành công (_Login success_)               | `test_login.py`         | ✅ Mẫu     |
+| TC-02 | Đăng nhập thất bại — sai mật khẩu (_Wrong password_) | `test_login.py`         | 🔴 TODO    |
+| TC-03 | Đăng nhập thất bại — để trống (_Empty fields_)       | `test_login.py`         | 🔴 TODO    |
+| TC-04 | Tìm sách theo tên (_Search by name_)                 | `test_search.py`        | 🔴 TODO    |
+| TC-05 | Tìm sách — không có kết quả (_No result_)            | `test_search.py`        | 🔴 TODO    |
+| TC-06 | Lọc theo thể loại (_Filter by category_)             | `test_search.py`        | 🔴 TODO    |
+| TC-07 | Tìm theo tác giả (_Search by author_)                | `test_search.py`        | 🔴 TODO    |
+| TC-08 | Mượn sách (_Borrow a book_)                          | `test_borrow_return.py` | 🔴 TODO    |
+| TC-09 | Xem sách đang mượn (_View borrowed books_)           | `test_borrow_return.py` | 🔴 TODO    |
+| TC-10 | Trả sách (_Return a book_)                           | `test_borrow_return.py` | 🔴 TODO    |
+| TC-11 | Đăng xuất (_Logout_)                                 | `test_general.py`       | 🔴 TODO    |
+| TC-12 | Chuyển ngôn ngữ sang EN (_Switch language_)          | `test_general.py`       | 🔴 TODO    |
 
 **Yêu cầu:** Hoàn thành tất cả 11 test case còn lại (TC-02 → TC-12).
 
@@ -206,39 +210,39 @@ CI sẽ thực hiện:
 ## 🔧 Các hàm hỗ trợ có sẵn / Available Helper Functions
 
 Các hàm đã được cung cấp trong `conftest.py` — **KHÔNG cần tự viết lại**.
-(*These functions are provided in `conftest.py` — you do NOT need to rewrite them.*)
+(_These functions are provided in `conftest.py` — you do NOT need to rewrite them._)
 
 ### Flutter Web helpers
 
 | Hàm                                 | Mô tả                                                                                     |
 | ----------------------------------- | ----------------------------------------------------------------------------------------- |
-| `enable_flutter_semantics(page)`    | Bật Semantics Tree — bắt buộc trước khi tương tác (*Enable Accessibility Semantics Tree*) |
-| `flutter_fill(page, label, value)`  | Nhập text vào input field (*Fill text into an input field using `aria-label`*)            |
-| `flutter_click_button(page, text)`  | Click button theo text hiển thị (*Click a button by its displayed text*)                  |
-| `wait_for_flutter(page, text, ...)` | Smart Wait — chờ Semantics Tree cập nhật (*Wait for Flutter Semantics Tree update*)       |
+| `enable_flutter_semantics(page)`    | Bật Semantics Tree — bắt buộc trước khi tương tác (_Enable Accessibility Semantics Tree_) |
+| `flutter_fill(page, label, value)`  | Nhập text vào input field (_Fill text into an input field using `aria-label`_)            |
+| `flutter_click_button(page, text)`  | Click button theo text hiển thị (_Click a button by its displayed text_)                  |
+| `wait_for_flutter(page, text, ...)` | Smart Wait — chờ Semantics Tree cập nhật (_Wait for Flutter Semantics Tree update_)       |
 
 ### Universal helpers
 
 | Hàm                                    | Mô tả                                                                       |
 | -------------------------------------- | --------------------------------------------------------------------------- |
-| `smart_fill(page, label, value, tech)` | Tự chọn cách nhập phù hợp (*Auto-select fill strategy*)                     |
-| `smart_click(page, text, tech)`        | Tự chọn cách click phù hợp (*Auto-select click strategy*)                   |
-| `login(page, test_config)`             | Đăng nhập với credentials từ `.env` (*Log in with credentials from `.env`*) |
+| `smart_fill(page, label, value, tech)` | Tự chọn cách nhập phù hợp (_Auto-select fill strategy_)                     |
+| `smart_click(page, text, tech)`        | Tự chọn cách click phù hợp (_Auto-select click strategy_)                   |
+| `login(page, test_config)`             | Đăng nhập với credentials từ `.env` (_Log in with credentials from `.env`_) |
 
 ### Fixtures
 
 | Fixture       | Mô tả                                                                                |
 | ------------- | ------------------------------------------------------------------------------------ |
-| `page`        | Context mới cho mỗi test (*Playwright Page object — fresh browser context per test*) |
+| `page`        | Context mới cho mỗi test (_Playwright Page object — fresh browser context per test_) |
 | `test_config` | Dict chứa `base_url`, `email`, `password`, `display_name`, `screenshot_dir`          |
-| `web_tech`    | Thông tin công nghệ web (*WebTech object — detected web technology info*)            |
+| `web_tech`    | Thông tin công nghệ web (_WebTech object — detected web technology info_)            |
 
 ---
 
 ## 💡 Cách tương tác với Flutter Web / How to Interact with Flutter Web
 
 Flutter Web (CanvasKit) render mọi thứ lên `<canvas>` — **không có HTML DOM thông thường**. Để test, ta cần:
-(*Flutter Web (CanvasKit) renders everything onto `<canvas>` — there is no standard HTML DOM. To test, we need to:*)
+(_Flutter Web (CanvasKit) renders everything onto `<canvas>` — there is no standard HTML DOM. To test, we need to:_)
 
 1. **Bật Semantics Tree**: Gọi `enable_flutter_semantics(page)` → Flutter tạo các elements ẩn `<flt-semantics>` phủ lên canvas
 2. **Tương tác qua ARIA attributes**:
